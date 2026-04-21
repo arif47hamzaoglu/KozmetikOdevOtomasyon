@@ -12,6 +12,21 @@ Bu proje, C# Windows Forms ve MySQL kullanılarak geliştirilen bir kozmetik ür
 
 ---
 
+## Projeyi İndirme (Klonlama)
+
+Projeyi bilgisayarınıza indirmek için Git'in kurulu olması gerekmektedir.
+
+1. Bir klasör açın, adres çubuğuna `cmd` yazıp Enter'a basın
+2. Aşağıdaki komutu yapıştırın ve çalıştırın:
+
+```
+git clone https://github.com/arif47hamzaoglu/KozmetikOdevOtomasyon.git
+```
+
+3. İndirme tamamlanınca klasörün içine girin, `KozmetikOtomasyon.sln` dosyasını Visual Studio ile açın
+
+---
+
 ## Kurulum
 
 1. XAMPP'i açın, Apache ve MySQL'i başlatın

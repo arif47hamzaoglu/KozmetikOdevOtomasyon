@@ -26,6 +26,7 @@ namespace KozmetikOtomasyon.Forms
             if (user != null)
             {
                 Session.CurrentUser = user;
+                Session.Cart.Clear();
                 new MainForm().Show();
                 this.Hide();
             }
@@ -33,6 +34,16 @@ namespace KozmetikOtomasyon.Forms
             {
                 MessageBox.Show("Email veya şifre hatalı!", "Giriş Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            new RegisterForm().ShowDialog();
+        }
+
+        private void lnkForgotPassword_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+        {
+            new ForgotPasswordForm().ShowDialog();
         }
     }
 }

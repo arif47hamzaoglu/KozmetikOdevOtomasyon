@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Windows.Forms;
 using KozmetikOtomasyon.Models;
 
@@ -13,7 +14,19 @@ namespace KozmetikOtomasyon.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            lblWelcome.Text = $"Hoşgeldin, {Session.CurrentUser.Name}";
+            bool isAdmin = Session.CurrentUser.IsAdmin;
+
+            lblWelcome.Text = isAdmin
+                ? $"Hoşgeldin, {Session.CurrentUser.Name}  [Admin]"
+                : $"Hoşgeldin, {Session.CurrentUser.Name}";
+
+            // Admin olmayanlara yönetim butonları gizlenir
+            btnAddProduct.Visible    = isAdmin;
+            btnEditProduct.Visible   = isAdmin;
+            btnDeleteProduct.Visible = isAdmin;
+            btnUpdateStatus.Visible  = isAdmin;
+            btnReport.Visible        = isAdmin;
+
             LoadProducts();
             LoadOrders();
         }
@@ -30,6 +43,23 @@ namespace KozmetikOtomasyon.Forms
                 dgvProducts.Columns["Price"].HeaderText = "Fiyat (TL)";
                 dgvProducts.Columns["Stock"].HeaderText = "Stok";
             }
+        }
+
+        private void dgvProducts_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvProducts.CurrentRow == null) { picProduct.Image = null; return; }
+            var p = (Product)dgvProducts.CurrentRow.DataBoundItem;
+
+            if (!string.IsNullOrEmpty(p.ImagePath))
+            {
+                string fullPath = Path.Combine(Application.StartupPath, p.ImagePath);
+                if (File.Exists(fullPath))
+                {
+                    picProduct.Image = System.Drawing.Image.FromFile(fullPath);
+                    return;
+                }
+            }
+            picProduct.Image = null;
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
@@ -64,7 +94,9 @@ namespace KozmetikOtomasyon.Forms
         // ─── SİPARİŞLER ────────────────────────────────
         private void LoadOrders()
         {
-            dgvOrders.DataSource = DatabaseHelper.GetOrders();
+            dgvOrders.DataSource = Session.CurrentUser.IsAdmin
+                ? DatabaseHelper.GetOrders()
+                : DatabaseHelper.GetOrdersByUser(Session.CurrentUser.Id);
 
             if (dgvOrders.Columns.Count > 0)
             {
@@ -115,10 +147,34 @@ namespace KozmetikOtomasyon.Forms
                 LoadOrders();
         }
 
+        // ─── RAPOR ─────────────────────────────────────
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            new ReportForm().ShowDialog();
+        }
+
+        // ─── PROFİL ────────────────────────────────────
+        private void btnProfile_Click(object sender, EventArgs e)
+        {
+            if (new ProfileForm().ShowDialog() == DialogResult.OK)
+                lblWelcome.Text = $"Hoşgeldin, {Session.CurrentUser.Name}";
+        }
+
+        // ─── SEPET ─────────────────────────────────────
+        private void btnCart_Click(object sender, EventArgs e)
+        {
+            if (new CartForm().ShowDialog() == DialogResult.OK)
+            {
+                LoadProducts();
+                LoadOrders();
+            }
+        }
+
         // ─── ÇIKIŞ ─────────────────────────────────────
         private void btnLogout_Click(object sender, EventArgs e)
         {
             Session.CurrentUser = null;
+            Session.Cart.Clear();
             new LoginForm().Show();
             this.Close();
         }

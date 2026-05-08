@@ -13,10 +13,14 @@ namespace KozmetikOtomasyon.Forms
         private void InitializeComponent()
         {
             this.lblWelcome       = new System.Windows.Forms.Label();
+            this.btnReport        = new System.Windows.Forms.Button();
+            this.btnProfile       = new System.Windows.Forms.Button();
+            this.btnCart          = new System.Windows.Forms.Button();
             this.btnLogout        = new System.Windows.Forms.Button();
             this.tabControl       = new System.Windows.Forms.TabControl();
             this.tabProducts      = new System.Windows.Forms.TabPage();
             this.dgvProducts      = new System.Windows.Forms.DataGridView();
+            this.picProduct       = new System.Windows.Forms.PictureBox();
             this.btnAddProduct    = new System.Windows.Forms.Button();
             this.btnEditProduct   = new System.Windows.Forms.Button();
             this.btnDeleteProduct = new System.Windows.Forms.Button();
@@ -34,11 +38,38 @@ namespace KozmetikOtomasyon.Forms
 
             // lblWelcome
             this.lblWelcome.Location = new System.Drawing.Point(12, 12);
-            this.lblWelcome.Size     = new System.Drawing.Size(500, 23);
+            this.lblWelcome.Size     = new System.Drawing.Size(355, 23);
             this.lblWelcome.Font     = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
 
+            // btnReport
+            this.btnReport.Location  = new System.Drawing.Point(375, 8);
+            this.btnReport.Size      = new System.Drawing.Size(80, 30);
+            this.btnReport.Text      = "Rapor";
+            this.btnReport.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnReport.ForeColor = System.Drawing.Color.White;
+            this.btnReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReport.Click    += new System.EventHandler(this.btnReport_Click);
+
+            // btnProfile
+            this.btnProfile.Location  = new System.Drawing.Point(465, 8);
+            this.btnProfile.Size      = new System.Drawing.Size(90, 30);
+            this.btnProfile.Text      = "Profilim";
+            this.btnProfile.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnProfile.ForeColor = System.Drawing.Color.White;
+            this.btnProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProfile.Click    += new System.EventHandler(this.btnProfile_Click);
+
+            // btnCart
+            this.btnCart.Location  = new System.Drawing.Point(565, 8);
+            this.btnCart.Size      = new System.Drawing.Size(80, 30);
+            this.btnCart.Text      = "Sepetim";
+            this.btnCart.BackColor = System.Drawing.Color.MediumOrchid;
+            this.btnCart.ForeColor = System.Drawing.Color.White;
+            this.btnCart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCart.Click    += new System.EventHandler(this.btnCart_Click);
+
             // btnLogout
-            this.btnLogout.Location  = new System.Drawing.Point(680, 8);
+            this.btnLogout.Location  = new System.Drawing.Point(655, 8);
             this.btnLogout.Size      = new System.Drawing.Size(90, 30);
             this.btnLogout.Text      = "Çıkış";
             this.btnLogout.BackColor = System.Drawing.Color.Tomato;
@@ -55,17 +86,26 @@ namespace KozmetikOtomasyon.Forms
             // ── ÜRÜNLER TABı ─────────────────────────────
             this.tabProducts.Text = "Ürünler";
             this.tabProducts.Controls.Add(this.dgvProducts);
+            this.tabProducts.Controls.Add(this.picProduct);
             this.tabProducts.Controls.Add(this.btnAddProduct);
             this.tabProducts.Controls.Add(this.btnEditProduct);
             this.tabProducts.Controls.Add(this.btnDeleteProduct);
             this.tabProducts.Controls.Add(this.btnOrder);
 
-            this.dgvProducts.Location            = new System.Drawing.Point(10, 10);
-            this.dgvProducts.Size                = new System.Drawing.Size(725, 370);
-            this.dgvProducts.AllowUserToAddRows  = false;
-            this.dgvProducts.ReadOnly            = true;
-            this.dgvProducts.SelectionMode       = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProducts.Location                  = new System.Drawing.Point(10, 10);
+            this.dgvProducts.Size                      = new System.Drawing.Size(490, 370);
+            this.dgvProducts.AllowUserToAddRows        = false;
+            this.dgvProducts.ReadOnly                  = true;
+            this.dgvProducts.SelectionMode             = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvProducts.AutoSizeColumnsMode       = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProducts.SelectionChanged         += new System.EventHandler(this.dgvProducts_SelectionChanged);
+
+            ((System.ComponentModel.ISupportInitialize)(this.picProduct)).BeginInit();
+            this.picProduct.Location  = new System.Drawing.Point(515, 10);
+            this.picProduct.Size      = new System.Drawing.Size(220, 290);
+            this.picProduct.SizeMode  = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picProduct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            ((System.ComponentModel.ISupportInitialize)(this.picProduct)).EndInit();
 
             this.btnAddProduct.Location  = new System.Drawing.Point(10, 395);
             this.btnAddProduct.Size      = new System.Drawing.Size(110, 35);
@@ -124,6 +164,9 @@ namespace KozmetikOtomasyon.Forms
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text          = "Kozmetik Otomasyon Sistemi";
             this.Controls.Add(this.lblWelcome);
+            this.Controls.Add(this.btnReport);
+            this.Controls.Add(this.btnProfile);
+            this.Controls.Add(this.btnCart);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.tabControl);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -137,10 +180,14 @@ namespace KozmetikOtomasyon.Forms
         }
 
         private System.Windows.Forms.Label        lblWelcome;
+        private System.Windows.Forms.Button       btnReport;
+        private System.Windows.Forms.Button       btnProfile;
+        private System.Windows.Forms.Button       btnCart;
         private System.Windows.Forms.Button       btnLogout;
         private System.Windows.Forms.TabControl   tabControl;
         private System.Windows.Forms.TabPage      tabProducts;
         private System.Windows.Forms.DataGridView dgvProducts;
+        private System.Windows.Forms.PictureBox   picProduct;
         private System.Windows.Forms.Button       btnAddProduct;
         private System.Windows.Forms.Button       btnEditProduct;
         private System.Windows.Forms.Button       btnDeleteProduct;

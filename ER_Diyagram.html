@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>ER Diyagramı — Kozmetik Otomasyon</title>
+<style>
+  body { margin: 0; padding: 30px; background: #eef2f7; font-family: 'Segoe UI', Arial, sans-serif; }
+  h1   { text-align: center; color: #2c3e50; margin-bottom: 6px; font-size: 22px; }
+  p.sub{ text-align: center; color: #7f8c8d; margin-bottom: 24px; font-size: 13px; }
+  .wrap{ background: white; border-radius: 10px; padding: 30px;
+         box-shadow: 0 4px 16px rgba(0,0,0,0.12); display: inline-block; }
+  .legend { margin-top: 20px; display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+  .leg-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #555; }
+  .leg-box  { width: 14px; height: 14px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>ER Diyagramı — Kozmetik Otomasyon Sistemi</h1>
+<p class="sub">Veritabanı Varlık-İlişki Diyagramı | MySQL</p>
+<div class="wrap">
+<svg width="920" height="640" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+    <polygon points="0 0,8 3,0 6" fill="#888"/>
+  </marker>
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+    <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#00000022"/>
+  </filter>
+</defs>
+
+<!-- ========== USERS ========== -->
+<g filter="url(#shadow)">
+  <rect x="30" y="60" width="240" height="36" fill="#3b5998" rx="6"/>
+  <text x="150" y="83" text-anchor="middle" fill="white" font-size="14" font-weight="bold">👤 USERS</text>
+  <rect x="30" y="96" width="240" height="174" fill="white" stroke="#3b5998" stroke-width="2" rx="0"/>
+  <rect x="30" y="192" width="240" height="0" fill="none"/>
+
+  <!-- field rows -->
+  <rect x="30" y="96"  width="240" height="29" fill="#dce8ff"/>
+  <rect x="30" y="125" width="240" height="29" fill="white"/>
+  <rect x="30" y="154" width="240" height="29" fill="#dce8ff"/>
+  <rect x="30" y="183" width="240" height="29" fill="white"/>
+  <rect x="30" y="212" width="240" height="29" fill="#dce8ff"/>
+  <rect x="30" y="96"  width="240" height="145" fill="none" stroke="#3b5998" stroke-width="2"/>
+
+  <text x="45"  y="115" fill="#c0392b" font-size="10" font-weight="bold">PK</text>
+  <text x="72"  y="115" fill="#222" font-size="12">Id</text>
+  <text x="258" y="115" fill="#888" font-size="10" text-anchor="end">INT</text>
+
+  <text x="45"  y="144" fill="#555" font-size="12">    Name</text>
+  <text x="258" y="144" fill="#888" font-size="10" text-anchor="end">VARCHAR(100)</text>
+
+  <text x="45"  y="173" fill="#555" font-size="12">    Email</text>
+  <text x="258" y="173" fill="#888" font-size="10" text-anchor="end">VARCHAR(100)</text>
+
+  <text x="45"  y="202" fill="#555" font-size="12">    Password</text>
+  <text x="258" y="202" fill="#888" font-size="10" text-anchor="end">VARCHAR(100)</text>
+
+  <text x="45"  y="231" fill="#555" font-size="12">    IsAdmin</text>
+  <text x="258" y="231" fill="#888" font-size="10" text-anchor="end">TINYINT(1)</text>
+</g>
+
+<!-- ========== PRODUCTS ========== -->
+<g filter="url(#shadow)">
+  <rect x="650" y="60" width="240" height="36" fill="#27ae60" rx="6"/>
+  <text x="770" y="83" text-anchor="middle" fill="white" font-size="14" font-weight="bold">📦 PRODUCTS</text>
+
+  <rect x="650" y="96"  width="240" height="29" fill="#d5f5e3"/>
+  <rect x="650" y="125" width="240" height="29" fill="white"/>
+  <rect x="650" y="154" width="240" height="29" fill="#d5f5e3"/>
+  <rect x="650" y="183" width="240" height="29" fill="white"/>
+  <rect x="650" y="212" width="240" height="29" fill="#d5f5e3"/>
+  <rect x="650" y="96"  width="240" height="145" fill="none" stroke="#27ae60" stroke-width="2"/>
+
+  <text x="665" y="115" fill="#c0392b" font-size="10" font-weight="bold">PK</text>
+  <text x="692" y="115" fill="#222" font-size="12">Id</text>
+  <text x="878" y="115" fill="#888" font-size="10" text-anchor="end">INT</text>
+
+  <text x="665" y="144" fill="#555" font-size="12">    Name</text>
+  <text x="878" y="144" fill="#888" font-size="10" text-anchor="end">VARCHAR(100)</text>
+
+  <text x="665" y="173" fill="#555" font-size="12">    Price</text>
+  <text x="878" y="173" fill="#888" font-size="10" text-anchor="end">DECIMAL(10,2)</text>
+
+  <text x="665" y="202" fill="#555" font-size="12">    Stock</text>
+  <text x="878" y="202" fill="#888" font-size="10" text-anchor="end">INT</text>
+
+  <text x="665" y="231" fill="#555" font-size="12">    ImagePath</text>
+  <text x="878" y="231" fill="#888" font-size="10" text-anchor="end">VARCHAR(500)</text>
+</g>
+
+<!-- ========== ORDERS ========== -->
+<g filter="url(#shadow)">
+  <rect x="340" y="400" width="240" height="36" fill="#e67e22" rx="6"/>
+  <text x="460" y="423" text-anchor="middle" fill="white" font-size="14" font-weight="bold">🛒 ORDERS</text>
+
+  <rect x="340" y="436" width="240" height="29" fill="#fdebd0"/>
+  <rect x="340" y="465" width="240" height="29" fill="white"/>
+  <rect x="340" y="494" width="240" height="29" fill="#fdebd0"/>
+  <rect x="340" y="523" width="240" height="29" fill="white"/>
+  <rect x="340" y="552" width="240" height="29" fill="#fdebd0"/>
+  <rect x="340" y="581" width="240" height="29" fill="white"/>
+  <rect x="340" y="610" width="240" height="29" fill="#fdebd0"/>
+  <rect x="340" y="436" width="240" height="203" fill="none" stroke="#e67e22" stroke-width="2"/>
+
+  <text x="355" y="455" fill="#c0392b" font-size="10" font-weight="bold">PK</text>
+  <text x="382" y="455" fill="#222" font-size="12">Id</text>
+  <text x="568" y="455" fill="#888" font-size="10" text-anchor="end">INT</text>
+
+  <text x="355" y="484" fill="#2980b9" font-size="10" font-weight="bold">FK</text>
+  <text x="382" y="484" fill="#222" font-size="12">UserId</text>
+  <text x="568" y="484" fill="#888" font-size="10" text-anchor="end">INT</text>
+
+  <text x="355" y="513" fill="#2980b9" font-size="10" font-weight="bold">FK</text>
+  <text x="382" y="513" fill="#222" font-size="12">ProductId</text>
+  <text x="568" y="513" fill="#888" font-size="10" text-anchor="end">INT</text>
+
+  <text x="355" y="542" fill="#555" font-size="12">    Quantity</text>
+  <text x="568" y="542" fill="#888" font-size="10" text-anchor="end">INT</text>
+
+  <text x="355" y="571" fill="#555" font-size="12">    TotalPrice</text>
+  <text x="568" y="571" fill="#888" font-size="10" text-anchor="end">DECIMAL(10,2)</text>
+
+  <text x="355" y="600" fill="#555" font-size="12">    OrderDate</text>
+  <text x="568" y="600" fill="#888" font-size="10" text-anchor="end">DATETIME</text>
+
+  <text x="355" y="629" fill="#555" font-size="12">    Status</text>
+  <text x="568" y="629" fill="#888" font-size="10" text-anchor="end">VARCHAR(20)</text>
+</g>
+
+<!-- ========== İLİŞKİ: Users → Orders (1:N) ========== -->
+<!-- Users bottom-center (150,241) → bend at (150,330) → bend at (390,330) → Orders top (390,400) -->
+<polyline points="150,241 150,330 390,330 390,400"
+  fill="none" stroke="#888" stroke-width="2" stroke-dasharray="7,4" marker-end="url(#arr)"/>
+
+<!-- cardinality -->
+<text x="158" y="270" fill="#e74c3c" font-size="14" font-weight="bold">1</text>
+<text x="378" y="395" fill="#e74c3c" font-size="14" font-weight="bold">N</text>
+
+<!-- label -->
+<rect x="90" y="316" width="110" height="20" fill="white" stroke="#ccc" stroke-width="1" rx="4"/>
+<text x="145" y="330" text-anchor="middle" fill="#666" font-size="11">verir (places)</text>
+
+<!-- ========== İLİŞKİ: Products → Orders (1:N) ========== -->
+<!-- Products bottom-center (770,241) → bend at (770,330) → bend at (530,330) → Orders top (530,400) -->
+<polyline points="770,241 770,330 530,330 530,400"
+  fill="none" stroke="#888" stroke-width="2" stroke-dasharray="7,4" marker-end="url(#arr)"/>
+
+<text x="778" y="270" fill="#e74c3c" font-size="14" font-weight="bold">1</text>
+<text x="536" y="395" fill="#e74c3c" font-size="14" font-weight="bold">N</text>
+
+<rect x="695" y="316" width="130" height="20" fill="white" stroke="#ccc" stroke-width="1" rx="4"/>
+<text x="760" y="330" text-anchor="middle" fill="#666" font-size="11">içerir (contains)</text>
+
+</svg>
+
+<div class="legend">
+  <div class="leg-item"><div class="leg-box" style="background:#c0392b"></div> PK — Primary Key</div>
+  <div class="leg-item"><div class="leg-box" style="background:#2980b9"></div> FK — Foreign Key</div>
+  <div class="leg-item"><div class="leg-box" style="background:#888; height:3px; width:24px; border-radius:2px"></div> 1:N İlişki</div>
+</div>
+</div>
+</body>
+</html>

@@ -12,12 +12,14 @@ namespace KozmetikOtomasyon.Forms
 
         private void InitializeComponent()
         {
-            this.lblTitle    = new System.Windows.Forms.Label();
-            this.lblEmail    = new System.Windows.Forms.Label();
-            this.txtEmail    = new System.Windows.Forms.TextBox();
-            this.lblPassword = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.btnLogin    = new System.Windows.Forms.Button();
+            this.lblTitle         = new System.Windows.Forms.Label();
+            this.lblEmail         = new System.Windows.Forms.Label();
+            this.txtEmail         = new System.Windows.Forms.TextBox();
+            this.lblPassword      = new System.Windows.Forms.Label();
+            this.txtPassword      = new System.Windows.Forms.TextBox();
+            this.btnLogin         = new System.Windows.Forms.Button();
+            this.btnRegister      = new System.Windows.Forms.Button();
+            this.lnkForgotPassword = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
 
             // lblTitle
@@ -47,16 +49,32 @@ namespace KozmetikOtomasyon.Forms
             this.txtPassword.PasswordChar = '*';
 
             // btnLogin
-            this.btnLogin.Location  = new System.Drawing.Point(130, 180);
-            this.btnLogin.Size      = new System.Drawing.Size(130, 35);
+            this.btnLogin.Location  = new System.Drawing.Point(40, 180);
+            this.btnLogin.Size      = new System.Drawing.Size(140, 35);
             this.btnLogin.Text      = "Giriş Yap";
             this.btnLogin.BackColor = System.Drawing.Color.MediumOrchid;
             this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Click    += new System.EventHandler(this.btnLogin_Click);
 
+            // btnRegister
+            this.btnRegister.Location  = new System.Drawing.Point(220, 180);
+            this.btnRegister.Size      = new System.Drawing.Size(140, 35);
+            this.btnRegister.Text      = "Kayıt Ol";
+            this.btnRegister.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnRegister.ForeColor = System.Drawing.Color.White;
+            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegister.Click    += new System.EventHandler(this.btnRegister_Click);
+
+            // lnkForgotPassword
+            this.lnkForgotPassword.Location  = new System.Drawing.Point(120, 228);
+            this.lnkForgotPassword.Size      = new System.Drawing.Size(160, 23);
+            this.lnkForgotPassword.Text      = "Şifremi Unuttum";
+            this.lnkForgotPassword.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lnkForgotPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkForgotPassword_LinkClicked);
+
             // LoginForm
-            this.ClientSize        = new System.Drawing.Size(400, 250);
+            this.ClientSize        = new System.Drawing.Size(400, 270);
             this.FormBorderStyle   = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox       = false;
             this.StartPosition     = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -67,15 +85,19 @@ namespace KozmetikOtomasyon.Forms
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.btnRegister);
+            this.Controls.Add(this.lnkForgotPassword);
 
             this.ResumeLayout(false);
         }
 
-        private System.Windows.Forms.Label   lblTitle;
-        private System.Windows.Forms.Label   lblEmail;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Label   lblPassword;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Button  btnLogin;
+        private System.Windows.Forms.Label     lblTitle;
+        private System.Windows.Forms.Label     lblEmail;
+        private System.Windows.Forms.TextBox   txtEmail;
+        private System.Windows.Forms.Label     lblPassword;
+        private System.Windows.Forms.TextBox   txtPassword;
+        private System.Windows.Forms.Button    btnLogin;
+        private System.Windows.Forms.Button    btnRegister;
+        private System.Windows.Forms.LinkLabel lnkForgotPassword;
     }
 }

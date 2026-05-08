@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>UML Sınıf Diyagramı — Kozmetik Otomasyon</title>
+<style>
+  body { margin: 0; padding: 30px; background: #eef2f7; font-family: 'Segoe UI', Arial, sans-serif; }
+  h1   { text-align: center; color: #2c3e50; margin-bottom: 6px; font-size: 22px; }
+  p.sub{ text-align: center; color: #7f8c8d; margin-bottom: 24px; font-size: 13px; }
+  .wrap{ background: white; border-radius: 10px; padding: 30px;
+         box-shadow: 0 4px 16px rgba(0,0,0,0.12); display: inline-block; }
+  .legend { margin-top: 20px; display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+  .leg-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #555; }
+</style>
+</head>
+<body>
+<h1>UML Sınıf Diyagramı — Kozmetik Otomasyon Sistemi</h1>
+<p class="sub">C# .NET 4.7.2 Windows Forms | Tüm sınıflar ve ilişkiler</p>
+<div class="wrap">
+<svg width="1260" height="980" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="assoc" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+    <polygon points="0 0,8 3,0 6" fill="#555"/>
+  </marker>
+  <marker id="use" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+    <polygon points="0 0,8 3,0 6" fill="#2980b9" opacity="0.7"/>
+  </marker>
+  <filter id="sh">
+    <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#00000018"/>
+  </filter>
+</defs>
+
+<!-- ==================== KATMAN ETİKETLERİ ==================== -->
+<!-- Katman 1: MODELLER -->
+<rect x="10" y="10" width="1240" height="220" fill="#f0f7ff" stroke="#b3d4f5" stroke-width="1.5" rx="8" stroke-dasharray="6,3"/>
+<text x="20" y="30" fill="#2980b9" font-size="13" font-weight="bold">📐 MODELLER (Models Katmanı)</text>
+
+<!-- Katman 2: STATİK SERVİSLER -->
+<rect x="10" y="250" width="1240" height="210" fill="#f0fff4" stroke="#a9dfbf" stroke-width="1.5" rx="8" stroke-dasharray="6,3"/>
+<text x="20" y="270" fill="#27ae60" font-size="13" font-weight="bold">⚙️ STATİK SERVİSLER (Business Logic Katmanı)</text>
+
+<!-- Katman 3: FORMLAR -->
+<rect x="10" y="480" width="1240" height="490" fill="#fffbf0" stroke="#f9ca8a" stroke-width="1.5" rx="8" stroke-dasharray="6,3"/>
+<text x="20" y="500" fill="#e67e22" font-size="13" font-weight="bold">🖥️ FORMLAR (Presentation Katmanı)</text>
+
+<!-- ==================== MODELLER ==================== -->
+
+<!-- User -->
+<g filter="url(#sh)">
+  <rect x="30"  y="40"  width="175" height="30" fill="#3b5998" rx="5 5 0 0"/>
+  <text x="118" y="60" text-anchor="middle" fill="white" font-size="12" font-weight="bold">User</text>
+  <rect x="30"  y="70"  width="175" height="145" fill="white" stroke="#3b5998" stroke-width="1.5" rx="0 0 5 5"/>
+  <line x1="30" y1="95" x2="205" y2="95" stroke="#ddd" stroke-width="1"/>
+  <text x="40" y="88"  fill="#777" font-size="10">«model»</text>
+  <text x="40" y="112" fill="#333" font-size="11">+ Id : int</text>
+  <text x="40" y="128" fill="#333" font-size="11">+ Name : string</text>
+  <text x="40" y="144" fill="#333" font-size="11">+ Email : string</text>
+  <text x="40" y="160" fill="#333" font-size="11">+ Password : string</text>
+  <text x="40" y="176" fill="#e74c3c" font-size="11">+ IsAdmin : bool</text>
+  <line x1="30" y1="183" x2="205" y2="183" stroke="#ddd" stroke-width="1"/>
+  <text x="40" y="200" fill="#aaa" font-size="10">(property sınıfı)</text>
+</g>
+
+<!-- Product -->
+<g filter="url(#sh)">
+  <rect x="225" y="40"  width="185" height="30" fill="#27ae60" rx="5 5 0 0"/>
+  <text x="318" y="60" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Product</text>
+  <rect x="225" y="70"  width="185" height="145" fill="white" stroke="#27ae60" stroke-width="1.5" rx="0 0 5 5"/>
+  <line x1="225" y1="95" x2="410" y2="95" stroke="#ddd" stroke-width="1"/>
+  <text x="235" y="88"  fill="#777" font-size="10">«model»</text>
+  <text x="235" y="112" fill="#333" font-size="11">+ Id : int</text>
+  <text x="235" y="128" fill="#333" font-size="11">+ Name : string</text>
+  <text x="235" y="144" fill="#333" font-size="11">+ Price : decimal</text>
+  <text x="235" y="160" fill="#333" font-size="11">+ Stock : int</text>
+  <text x="235" y="176" fill="#333" font-size="11">+ ImagePath : string</text>
+  <line x1="225" y1="183" x2="410" y2="183" stroke="#ddd" stroke-width="1"/>
+  <text x="235" y="200" fill="#aaa" font-size="10">(property sınıfı)</text>
+</g>
+
+<!-- Order -->
+<g filter="url(#sh)">
+  <rect x="430" y="40"  width="200" height="30" fill="#e67e22" rx="5 5 0 0"/>
+  <text x="530" y="60" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Order</text>
+  <rect x="430" y="70"  width="200" height="165" fill="white" stroke="#e67e22" stroke-width="1.5" rx="0 0 5 5"/>
+  <line x1="430" y1="95" x2="630" y2="95" stroke="#ddd" stroke-width="1"/>
+  <text x="440" y="88"  fill="#777" font-size="10">«model»</text>
+  <text x="440" y="112" fill="#333" font-size="11">+ Id : int</text>
+  <text x="440" y="128" fill="#333" font-size="11">+ UserId : int</text>
+  <text x="440" y="144" fill="#333" font-size="11">+ UserName : string</text>
+  <text x="440" y="160" fill="#333" font-size="11">+ ProductName : string</text>
+  <text x="440" y="176" fill="#333" font-size="11">+ Quantity : int</text>
+  <text x="440" y="192" fill="#333" font-size="11">+ TotalPrice : decimal</text>
+  <text x="440" y="208" fill="#333" font-size="11">+ Status : string</text>
+  <line x1="430" y1="215" x2="630" y2="215" stroke="#ddd" stroke-width="1"/>
+</g>
+
+<!-- CartItem -->
+<g filter="url(#sh)">
+  <rect x="650" y="40"  width="185" height="30" fill="#8e44ad" rx="5 5 0 0"/>
+  <text x="743" y="60" text-anchor="middle" fill="white" font-size="12" font-weight="bold">CartItem</text>
+  <rect x="650" y="70"  width="185" height="145" fill="white" stroke="#8e44ad" stroke-width="1.5" rx="0 0 5 5"/>
+  <line x1="650" y1="95" x2="835" y2="95" stroke="#ddd" stroke-width="1"/>
+  <text x="660" y="88"  fill="#777" font-size="10">«model»</text>
+  <text x="660" y="112" fill="#333" font-size="11">+ ProductId : int</text>
+  <text x="660" y="128" fill="#333" font-size="11">+ ProductName : string</text>
+  <text x="660" y="144" fill="#333" font-size="11">+ Price : decimal</text>
+  <text x="660" y="160" fill="#333" font-size="11">+ Quantity : int</text>
+  <text x="660" y="176" fill="#333" font-size="11">+ Total : decimal (ro)</text>
+  <line x1="650" y1="183" x2="835" y2="183" stroke="#ddd" stroke-width="1"/>
+  <text x="660" y="200" fill="#aaa" font-size="10">(readonly hesaplama)</text>
+</g>
+
+<!-- MonthlyReport -->
+<g filter="url(#sh)">
+  <rect x="855" y="40"  width="185" height="30" fill="#c0392b" rx="5 5 0 0"/>
+  <text x="948" y="60" text-anchor="middle" fill="white" font-size="12" font-weight="bold">MonthlyReport</text>
+  <rect x="855" y="70"  width="185" height="145" fill="white" stroke="#c0392b" stroke-width="1.5" rx="0 0 5 5"/>
+  <line x1="855" y1="95" x2="1040" y2="95" stroke="#ddd" stroke-width="1"/>
+  <text x="865" y="88"  fill="#777" font-size="10">«model»</text>
+  <text x="865" y="112" fill="#333" font-size="11">+ AySayisi : int</text>
+  <text x="865" y="128" fill="#333" font-size="11">+ Ay : string</text>
+  <text x="865" y="144" fill="#333" font-size="11">+ ToplamSiparis : int</text>
+  <text x="865" y="160" fill="#333" font-size="11">+ ToplamCiro : decimal</text>
+  <text x="865" y="176" fill="#333" font-size="11">+ Onaylanan / Bekleyen</text>
+  <line x1="855" y1="183" x2="1040" y2="183" stroke="#ddd" stroke-width="1"/>
+  <text x="865" y="200" fill="#aaa" font-size="10">+ Iptal : int</text>
+</g>
+
+<!-- TopProduct -->
+<g filter="url(#sh)">
+  <rect x="1060" y="40"  width="175" height="30" fill="#16a085" rx="5 5 0 0"/>
+  <text x="1148" y="60" text-anchor="middle" fill="white" font-size="12" font-weight="bold">TopProduct</text>
+  <rect x="1060" y="70"  width="175" height="130" fill="white" stroke="#16a085" stroke-width="1.5" rx="0 0 5 5"/>
+  <line x1="1060" y1="95" x2="1235" y2="95" stroke="#ddd" stroke-width="1"/>
+  <text x="1070" y="88"  fill="#777" font-size="10">«model»</text>
+  <text x="1070" y="112" fill="#333" font-size="11">+ UrunAdi : string</text>
+  <text x="1070" y="128" fill="#333" font-size="11">+ ToplamAdet : int</text>
+  <text x="1070" y="144" fill="#333" font-size="11">+ ToplamCiro : decimal</text>
+  <line x1="1060" y1="153" x2="1235" y2="153" stroke="#ddd" stroke-width="1"/>
+  <text x="1070" y="170" fill="#aaa" font-size="10">(rapor çıktısı)</text>
+</g>
+
+<!-- ==================== STATİK SERVİSLER ==================== -->
+
+<!-- DatabaseHelper -->
+<g filter="url(#sh)">
+  <rect x="30"  y="265" width="360" height="30" fill="#1a5276" rx="5 5 0 0"/>
+  <text x="210" y="285" text-anchor="middle" fill="white" font-size="12" font-weight="bold">DatabaseHelper</text>
+  <rect x="30"  y="295" width="360" height="150" fill="white" stroke="#1a5276" stroke-width="1.5" rx="0 0 5 5"/>
+  <line x1="30"  y1="315" x2="390" y2="315" stroke="#ddd" stroke-width="1"/>
+  <text x="40" y="308" fill="#e74c3c" font-size="10">«static class»</text>
+  <line x1="30"  y1="330" x2="390" y2="330" stroke="#eee" stroke-width="1"/>
+  <text x="40" y="325" fill="#777" font-size="10">— özellik yok (tüm metodlar statik) —</text>
+  <text x="40" y="348" fill="#2471a3" font-size="11">+ Initialize()</text>
+  <text x="40" y="364" fill="#2471a3" font-size="11">+ Login(email, pass) : User</text>
+  <text x="40" y="380" fill="#2471a3" font-size="11">+ RegisterUser(user) : bool</text>
+  <text x="40" y="396" fill="#2471a3" font-size="11">+ UpdateUser(user) / ResetPassword()</text>
+  <text x="40" y="412" fill="#2471a3" font-size="11">+ GetProducts() / AddProduct() / ...</text>
+  <text x="40" y="428" fill="#2471a3" font-size="11">+ AddOrder() / GetOrders() / GetMonthlyReport()</text>
+</g>
+
+<!-- Session -->
+<g filter="url(#sh)">
+  <rect x="420" y="265" width="220" height="30" fill="#1a5276" rx="5 5 0 0"/>
+  <text x="530" y="285" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Session</text>
+  <rect x="420" y="295" width="220" height="150" fill="white" stroke="#1a5276" stroke-width="1.5" rx="0 0 5 5"/>
+  <line x1="420" y1="315" x2="640" y2="315" stroke="#ddd" stroke-width="1"/>
+  <text x="430" y="308" fill="#e74c3c" font-size="10">«static class»</text>
+  <text x="430" y="338" fill="#333" font-size="11">+ CurrentUser : User</text>
+  <text x="430" y="358" fill="#333" font-size="11">+ Cart : List&lt;CartItem&gt;</text>
+  <line x1="420" y1="368" x2="640" y2="368" stroke="#ddd" stroke-width="1"/>
+  <text x="430" y="385" fill="#777" font-size="10">Uygulama genelinde</text>
+  <text x="430" y="400" fill="#777" font-size="10">erişilebilir global durum.</text>
+  <text x="430" y="415" fill="#777" font-size="10">Tüm formlar buradan</text>
+  <text x="430" y="430" fill="#777" font-size="10">CurrentUser okur.</text>
+</g>
+
+<!-- EmailHelper -->
+<g filter="url(#sh)">
+  <rect x="670" y="265" width="220" height="30" fill="#7f8c8d" rx="5 5 0 0"/>
+  <text x="780" y="285" text-anchor="middle" fill="white" font-size="12" font-weight="bold">EmailHelper</text>
+  <rect x="670" y="295" width="220" height="150" fill="white" stroke="#7f8c8d" stroke-width="1.5" rx="0 0 5 5"/>
+  <line x1="670" y1="315" x2="890" y2="315" stroke="#ddd" stroke-width="1"/>
+  <text x="680" y="308" fill="#e74c3c" font-size="10">«static class» «stub»</text>
+  <text x="680" y="338" fill="#aaa" font-size="11">+ SendWelcomeEmail()</text>
+  <text x="680" y="358" fill="#aaa" font-size="11">+ SendPasswordResetEmail()</text>
+  <line x1="670" y1="368" x2="890" y2="368" stroke="#ddd" stroke-width="1"/>
+  <text x="680" y="385" fill="#e74c3c" font-size="10">⚠ Henüz implemente edilmedi.</text>
+  <text x="680" y="400" fill="#777" font-size="10">Gmail SMTP entegrasyonu</text>
+  <text x="680" y="415" fill="#777" font-size="10">ikinci aşamada eklenecek.</text>
+</g>
+
+<!-- Program -->
+<g filter="url(#sh)">
+  <rect x="920" y="265" width="175" height="30" fill="#555" rx="5 5 0 0"/>
+  <text x="1008" y="285" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Program</text>
+  <rect x="920" y="295" width="175" height="150" fill="white" stroke="#555" stroke-width="1.5" rx="0 0 5 5"/>
+  <line x1="920" y1="315" x2="1095" y2="315" stroke="#ddd" stroke-width="1"/>
+  <text x="930" y="308" fill="#777" font-size="10">«entry point»</text>
+  <text x="930" y="338" fill="#2471a3" font-size="11">+ Main() : static void</text>
+  <line x1="920" y1="348" x2="1095" y2="348" stroke="#ddd" stroke-width="1"/>
+  <text x="930" y="365" fill="#777" font-size="10">1. DatabaseHelper</text>
+  <text x="930" y="380" fill="#777" font-size="10">   .Initialize()</text>
+  <text x="930" y="395" fill="#777" font-size="10">2. Application.Run</text>
+  <text x="930" y="410" fill="#777" font-size="10">   (new LoginForm())</text>
+</g>
+
+<!-- ==================== FORMLAR ==================== -->
+
+<!-- LoginForm -->
+<g filter="url(#sh)">
+  <rect x="30"  y="510" width="175" height="25" fill="#c0392b" rx="5 5 0 0"/>
+  <text x="118" y="527" text-anchor="middle" fill="white" font-size="11" font-weight="bold">LoginForm</text>
+  <rect x="30"  y="535" width="175" height="130" fill="white" stroke="#c0392b" stroke-width="1.5" rx="0 0 5 5"/>
+  <line x1="30" y1="550" x2="205" y2="550" stroke="#ddd" stroke-width="1"/>
+  <text x="40" y="545" fill="#777" font-size="9">«Form»</text>
+  <text x="40" y="566" fill="#333" font-size="10">- txtEmail</text>
+  <text x="40" y="580" fill="#333" font-size="10">- txtPassword</text>
+  <line x1="30" y1="590" x2="205" y2="590" stroke="#ddd" stroke-width="1"/>
+  <text x="40" y="606" fill="#2471a3" font-size="10">+ btnLogin_Click()</text>
+  <text x="40" y="620" fill="#2471a3" font-size="10">+ btnRegister_Click()</text>
+  <text x="40" y="634" fill="#2471a3" font-size="10">+ lnkForgot_Click()</text>
+  <text x="40" y="655" fill="#888" font-size="9">Açar: RegisterForm</text>
+  <text x="40" y="667" fill="#888" font-size="9">       ForgotPasswordForm</text>
+</g>
+
+<!-- RegisterForm -->
+<g filter="url(#sh)">
+  <rect x="225" y="510" width="175" height="25" fill="#c0392b" rx="5 5 0 0"/>
+  <text x="313" y="527" text-anchor="middle" fill="white" font-size="11" font-weight="bold">RegisterForm</text>
+  <rect x="225" y="535" width="175" height="130" fill="white" stroke="#c0392b" stroke-width="1.5" rx="0 0 5 5"/>
+  <line x1="225" y1="550" x2="400" y2="550" stroke="#ddd" stroke-width="1"/>
+  <text x="235" y="545" fill="#777" font-size="9">«Form»</text>
+  <text x="235" y="566" fill="#333" font-size="10">- txtName, txtEmail</text>
+  <text x="235" y="580" fill="#333" font-size="10">- txtPassword, txtConfirm</text>
+  <line x1="225" y1="590" x2="400" y2="590" stroke="#ddd" stroke-width="1"/>
+  <text x="235" y="606" fill="#2471a3" font-size="10">+ btnRegister_Click()</text>
+  <text x="235" y="620" fill="#2471a3" font-size="10">+ btnCancel_Click()</text>
+  <text x="235" y="645" fill="#888" font-size="9">Doğrulama: email unique,</text>
+  <text x="235" y="657" fill="#888" font-size="9">şifre min 4 karakter</text>
+</g>
+
+<!-- ForgotPasswordForm -->
+<g filter="url(#sh)">
+  <rect x="420" y="510" width="190" height="25" fill="#c0392b" rx="5 5 0 0"/>
+  <text x="515" y="527" text-anchor="middle" fill="white" font-size="11" font-weight="bold">ForgotPasswordForm</text>
+  <rect x="420" y="535" width="190" height="130" fill="white" stroke="#c0392b" stroke-width="1.5" rx="0 0 5 5"/>
+  <line x1="420" y1="550" x2="610" y2="550" stroke="#ddd" stroke-width="1"/>
+  <text x="430" y="545" fill="#777" font-size="9">«Form»</text>
+  <text x="430" y="566" fill="#333" font-size="10">- txtEmail</text>
+  <text x="430" y="580" fill="#333" font-size="10">- txtNewPassword, txtConfirm</text>
+  <line x1="420" y1="590" x2="610" y2="590" stroke="#ddd" stroke-width="1"/>
+  <text x="430" y="606" fill="#2471a3" font-size="10">+ btnReset_Click()</text>
+  <text x="430" y="645" fill="#888" font-size="9">DB'de şifreyi günceller.</text>
+  <text x="430" y="657" fill="#888" font-size="9">Email kontrolü yapar.</text>
+</g>
+
+<!-- MainForm -->
+<g filter="url(#sh)">
+  <rect x="640" y="510" width="200" height="25" fill="#1a5276" rx="5 5 0 0"/>
+  <text x="740" y="527" text-anchor="middle" fill="white" font-size="11" font-weight="bold">MainForm  ★</text>
+  <rect x="640" y="535" width="200" height="175" fill="white" stroke="#1a5276" stroke-width="1.5" rx="0 0 5 5"/>
+  <line x1="640" y1="550" x2="840" y2="550" stroke="#ddd" stroke-width="1"/>
+  <text x="650" y="545" fill="#777" font-size="9">«Form» — Ana Ekran</text>
+  <text x="650" y="566" fill="#333" font-size="10">- dgvProducts, dgvOrders</text>
+  <text x="650" y="580" fill="#333" font-size="10">- picProduct : PictureBox</text>
+  <line x1="640" y1="590" x2="840" y2="590" stroke="#ddd" stroke-width="1"/>
+  <text x="650" y="606" fill="#2471a3" font-size="10">+ LoadProducts()</text>
+  <text x="650" y="620" fill="#2471a3" font-size="10">+ LoadOrders()</text>
+  <text x="650" y="634" fill="#2471a3" font-size="10">+ btnReport/Profile/Cart()</text>
+  <text x="650" y="648" fill="#2471a3" font-size="10">+ btnAdd/Edit/Delete()</text>
+  <line x1="640" y1="658" x2="840" y2="658" stroke="#ddd" stroke-width="1"/>
+  <text x="650" y="672" fill="#e74c3c" font-size="9">Admin: tüm butonlar görünür</text>
+  <text x="650" y="684" fill="#27ae60" font-size="9">User: yönetim butonları gizlenir</text>
+  <text x="650" y="698" fill="#888" font-size="9">Açar: CartForm, ProfileForm...</text>
+</g>
+
+<!-- ProfileForm -->
+<g filter="url(#sh)">
+  <rect x="860" y="510" width="175" height="25" fill="#8e44ad" rx="5 5 0 0"/>
+  <text x="948" y="527" text-anchor="middle" fill="white" font-size="11" font-weight="bold">ProfileForm</text>
+  <rect x="860" y="535" width="175" height="130" fill="white" stroke="#8e44ad" stroke-width="1.5" rx="0 0 5 5"/>
+  <line x1="860" y1="550" x2="1035" y2="550" stroke="#ddd" stroke-width="1"/>
+  <text x="870" y="545" fill="#777" font-size="9">«Form»</text>
+  <text x="870" y="566" fill="#333" font-size="10">- txtName, txtEmail</text>
+  <text x="870" y="580" fill="#333" font-size="10">- txtCurrentPsw, txtNew</text>
+  <line x1="860" y1="590" x2="1035" y2="590" stroke="#ddd" stroke-width="1"/>
+  <text x="870" y="606" fill="#2471a3" font-size="10">+ btnSave_Click()</text>
+  <text x="870" y="645" fill="#888" font-size="9">Mevcut şifre doğrulaması</text>
+  <text x="870" y="657" fill="#888" font-size="9">Session.CurrentUser günceller</text>
+</g>
+
+<!-- ProductAddEditForm -->
+<g filter="url(#sh)">
+  <rect x="30"  y="720" width="200" height="25" fill="#27ae60" rx="5 5 0 0"/>
+  <text x="130" y="737" text-anchor="middle" fill="white" font-size="11" font-weight="bold">ProductAddEditForm</text>
+  <rect x="30"  y="745" width="200" height="130" fill="white" stroke="#27ae60" stroke-width="1.5" rx="0 0 5 5"/>
+  <line x1="30" y1="760" x2="230" y2="760" stroke="#ddd" stroke-width="1"/>
+  <text x="40" y="755" fill="#777" font-size="9">«Form» — Admin Only</text>
+  <text x="40" y="776" fill="#333" font-size="10">- txtName, txtPrice, txtStock</text>
+  <text x="40" y="790" fill="#333" font-size="10">- txtImagePath, picPreview</text>
+  <line x1="30" y1="800" x2="230" y2="800" stroke="#ddd" stroke-width="1"/>
+  <text x="40" y="816" fill="#2471a3" font-size="10">+ btnSave_Click()</text>
+  <text x="40" y="830" fill="#2471a3" font-size="10">+ btnBrowse_Click()</text>
+  <text x="40" y="855" fill="#888" font-size="9">Ekle (null) veya Düzenle modu</text>
+</g>
+
+<!-- OrderForm -->
+<g filter="url(#sh)">
+  <rect x="250" y="720" width="175" height="25" fill="#e67e22" rx="5 5 0 0"/>
+  <text x="338" y="737" text-anchor="middle" fill="white" font-size="11" font-weight="bold">OrderForm</text>
+  <rect x="250" y="745" width="175" height="130" fill="white" stroke="#e67e22" stroke-width="1.5" rx="0 0 5 5"/>
+  <line x1="250" y1="760" x2="425" y2="760" stroke="#ddd" stroke-width="1"/>
+  <text x="260" y="755" fill="#777" font-size="9">«Form»</text>
+  <text x="260" y="776" fill="#333" font-size="10">- cmbProducts</text>
+  <text x="260" y="790" fill="#333" font-size="10">- txtQuantity</text>
+  <line x1="250" y1="800" x2="425" y2="800" stroke="#ddd" stroke-width="1"/>
+  <text x="260" y="816" fill="#2471a3" font-size="10">+ btnPlaceOrder_Click()</text>
+  <text x="260" y="855" fill="#888" font-size="9">Stok kontrolü yapar,</text>
+  <text x="260" y="867" fill="#888" font-size="9">tek ürün siparişi.</text>
+</g>
+
+<!-- CartForm -->
+<g filter="url(#sh)">
+  <rect x="450" y="720" width="200" height="25" fill="#8e44ad" rx="5 5 0 0"/>
+  <text x="550" y="737" text-anchor="middle" fill="white" font-size="11" font-weight="bold">CartForm</text>
+  <rect x="450" y="745" width="200" height="130" fill="white" stroke="#8e44ad" stroke-width="1.5" rx="0 0 5 5"/>
+  <line x1="450" y1="760" x2="650" y2="760" stroke="#ddd" stroke-width="1"/>
+  <text x="460" y="755" fill="#777" font-size="9">«Form»</text>
+  <text x="460" y="776" fill="#333" font-size="10">- dgvProducts, dgvCart</text>
+  <text x="460" y="790" fill="#333" font-size="10">- txtQuantity, lblTotal</text>
+  <line x1="450" y1="800" x2="650" y2="800" stroke="#ddd" stroke-width="1"/>
+  <text x="460" y="816" fill="#2471a3" font-size="10">+ btnAddToCart / Remove()</text>
+  <text x="460" y="830" fill="#2471a3" font-size="10">+ btnCheckout_Click()</text>
+  <text x="460" y="855" fill="#888" font-size="9">Session.Cart'ı kullanır.</text>
+  <text x="460" y="867" fill="#888" font-size="9">Toplu sipariş oluşturur.</text>
+</g>
+
+<!-- ReportForm -->
+<g filter="url(#sh)">
+  <rect x="680" y="720" width="200" height="25" fill="#1a5276" rx="5 5 0 0"/>
+  <text x="780" y="737" text-anchor="middle" fill="white" font-size="11" font-weight="bold">ReportForm</text>
+  <rect x="680" y="745" width="200" height="130" fill="white" stroke="#1a5276" stroke-width="1.5" rx="0 0 5 5"/>
+  <line x1="680" y1="760" x2="880" y2="760" stroke="#ddd" stroke-width="1"/>
+  <text x="690" y="755" fill="#777" font-size="9">«Form» — Admin Only</text>
+  <text x="690" y="776" fill="#333" font-size="10">- cmbYear, tabControl</text>
+  <text x="690" y="790" fill="#333" font-size="10">- dgvMonthly, dgvTop</text>
+  <line x1="680" y1="800" x2="880" y2="800" stroke="#ddd" stroke-width="1"/>
+  <text x="690" y="816" fill="#2471a3" font-size="10">+ LoadReport()</text>
+  <text x="690" y="855" fill="#888" font-size="9">Aylık Özet + En Çok Satan</text>
+  <text x="690" y="867" fill="#888" font-size="9">sekmeleri. Yıla göre filtreler.</text>
+</g>
+
+<!-- ==================== İLİŞKİ OKLARI ==================== -->
+
+<!-- Session --- User (uses) -->
+<line x1="530" y1="295" x2="530" y2="241" stroke="#2980b9" stroke-width="1.5"
+  stroke-dasharray="5,3" marker-end="url(#use)" opacity="0.7"/>
+<text x="535" y="270" fill="#2980b9" font-size="9">uses</text>
+
+<!-- Session --- CartItem (uses) -->
+<line x1="640" y1="350" x2="743" y2="215" stroke="#2980b9" stroke-width="1.5"
+  stroke-dasharray="5,3" marker-end="url(#use)" opacity="0.7"/>
+
+<!-- DatabaseHelper --- Models (uses) -->
+<line x1="210" y1="265" x2="118" y2="215" stroke="#2980b9" stroke-width="1.5"
+  stroke-dasharray="5,3" marker-end="url(#use)" opacity="0.6"/>
+
+<!-- MainForm opens child forms (dashed) -->
+<line x1="740" y1="710" x2="550" y2="745" stroke="#e67e22" stroke-width="1.5"
+  stroke-dasharray="4,3" marker-end="url(#assoc)" opacity="0.6"/>
+<line x1="740" y1="710" x2="780" y2="745" stroke="#1a5276" stroke-width="1.5"
+  stroke-dasharray="4,3" marker-end="url(#assoc)" opacity="0.6"/>
+<line x1="740" y1="710" x2="948" y2="535" stroke="#8e44ad" stroke-width="1.5"
+  stroke-dasharray="4,3" marker-end="url(#assoc)" opacity="0.6"/>
+
+<!-- LoginForm opens Register/Forgot -->
+<line x1="205" y1="580" x2="225" y2="580" stroke="#c0392b" stroke-width="1.5"
+  stroke-dasharray="4,3" marker-end="url(#assoc)" opacity="0.7"/>
+<line x1="205" y1="600" x2="420" y2="590" stroke="#c0392b" stroke-width="1.5"
+  stroke-dasharray="4,3" marker-end="url(#assoc)" opacity="0.7"/>
+
+<!-- Program -> LoginForm -->
+<line x1="920" y1="380" x2="118" y2="510" stroke="#555" stroke-width="1.5"
+  stroke-dasharray="4,3" marker-end="url(#assoc)" opacity="0.5"/>
+<text x="450" y="440" fill="#555" font-size="10" transform="rotate(-10,450,440)">Application.Run()</text>
+
+</svg>
+
+<div class="legend">
+  <div class="leg-item">
+    <svg width="30" height="12"><line x1="0" y1="6" x2="30" y2="6" stroke="#555" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#assoc)"/></svg>
+    Açar / Kullanır ilişkisi
+  </div>
+  <div class="leg-item">★ — Ana form</div>
+  <div class="leg-item">«stub» — Henüz implemente edilmedi</div>
+  <div class="leg-item">Admin Only — Sadece admin görebilir</div>
+</div>
+</div>
+</body>
+</html>
